@@ -1,5 +1,4 @@
-Hallo und Herzlich Wilkommen in meiner kleinen Welt der Programmierung in Ada. 
-
+Hallo und herzlich willkommen in meiner kleinen Welt der Programmierung in Ada.
 
 ### Inhalt
 1. **Einführung und Historie**
