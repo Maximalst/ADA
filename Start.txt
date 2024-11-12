@@ -1,102 +1,73 @@
-Ein vollständiges 100.000-Wörter-Tutorial hier würde aus Platzgründen nicht möglich sein, aber ich kann dir eine ausführliche Einführung in die Programmiersprache Ada geben, die dir alle grundlegenden und wichtigen Konzepte sowie praktische Beispiele und Tipps bietet.
+### 1. Einführung und Historie
 
-### Einführung in Ada
-
-Ada ist eine strukturierte, statisch typisierte und hauptsächlich prozedurale Programmiersprache, die in den 1980er Jahren entwickelt wurde und ihren Namen von Ada Lovelace erhielt, einer Pionierin der Computerprogrammierung. Die Sprache wurde ursprünglich für das US-Verteidigungsministerium konzipiert, um sicherheitskritische und große Systeme effizient und sicher zu entwickeln. Sie ist bekannt für ihre Robustheit, Zuverlässigkeit und vor allem für strenge Typüberprüfungen, die dazu beitragen, Fehler frühzeitig zu erkennen.
-
-### Inhalt
-
-1. **Einführung in Ada und Entwicklungsumgebung**
-2. **Grundlegende Syntax und Struktur**
-3. **Datentypen und Variablen**
-4. **Kontrollstrukturen**
-5. **Prozeduren und Funktionen**
-6. **Modularisierung und Packages**
-7. **Ausnahmebehandlung**
-8. **Concurrency (Nebenläufigkeit)**
-9. **Tipps und bewährte Vorgehensweisen**
-10. **Komplexeres Beispielprogramm**
+Ada ist eine stark typisierte und prozedurale Programmiersprache, die Anfang der 1980er Jahre entwickelt wurde. Der Name stammt von Ada Lovelace, einer frühen Pionierin der Programmierung. Die Sprache wurde vor allem für sicherheitskritische Systeme entworfen und wird bis heute in der Luftfahrt, im Militär und in sicherheitsrelevanten Bereichen eingesetzt. Ihre strenge Typprüfung und Robustheit sind besonders nützlich für große und fehleranfällige Anwendungen.
 
 ---
 
-### 1. Einführung in Ada und Entwicklungsumgebung
+### 2. Grundlegende Syntax
 
-#### Installation und Einrichten
-Um Ada-Programme zu schreiben, kannst du den GNAT-Compiler verwenden, der Teil der GNU Compiler Collection (GCC) ist. Die beliebte IDE für Ada ist [GNAT Studio](https://www.adacore.com/download), die viele Werkzeuge für die Entwicklung und das Debugging bietet.
+Ein Ada-Programm besteht aus mindestens einer Prozedur, die als Einstiegspunkt dient.
 
----
-
-### 2. Grundlegende Syntax und Struktur
-
-Ein einfaches Ada-Programm besteht aus einer Hauptprozedur. Ada-Dateien haben normalerweise die Endung `.adb` für Implementationsdateien und `.ads` für Spezifikationsdateien (ähnlich wie Header-Dateien in C).
-
-Hier ein einfaches "Hello, World!"-Programm in Ada:
+**Beispiel: Hello World in Ada**
 
 ```ada
-with Ada.Text_IO;  -- Dies importiert die Standard-Ein-/Ausgabe-Bibliothek
+with Ada.Text_IO;  -- Importiert die Bibliothek für Ein- und Ausgabe
 
-procedure Hello is
+procedure Hello_World is
 begin
    Ada.Text_IO.Put_Line("Hello, World!");
-end Hello;
+end Hello_World;
 ```
 
 ### 3. Datentypen und Variablen
 
-Ada unterstützt zahlreiche Datentypen. Die häufigsten sind:
+Ada ist eine stark typisierte Sprache und bietet eine Vielzahl von Datentypen wie `Integer`, `Float`, `Boolean`, `Character`, `String`, `Array`, und `Record`.
 
-- **Integer**: Ganzzahlen
-- **Float**: Gleitkommazahlen
-- **Boolean**: Wahr/Falsch-Werte
-- **Character** und **String**: Zeichen und Zeichenketten
-- **Array** und **Record**: Felder und strukturierte Datentypen
-
-#### Beispiel:
+**Beispiel: Datentypen und Variablen**
 
 ```ada
-procedure DataTypes is
+procedure Data_Types is
    A : Integer := 10;
-   B : Float := 20.5;
+   B : Float := 5.5;
    C : Boolean := True;
    D : Character := 'A';
    Name : String := "Ada";
-begin
-   Ada.Text_IO.Put_Line("Integer A: " & Integer'Image(A));
-   Ada.Text_IO.Put_Line("Float B: " & Float'Image(B));
-   Ada.Text_IO.Put_Line("Boolean C: " & Boolean'Image(C));
-   Ada.Text_IO.Put_Line("Character D: " & D);
-   Ada.Text_IO.Put_Line("String Name: " & Name);
-end DataTypes;
-```
 
-**Hinweis:** Die Verwendung von `&` in Ada verbindet Zeichenketten. Die `'Image`-Funktion gibt die String-Repräsentation eines Wertes zurück.
+begin
+   Ada.Text_IO.Put_Line("Integer: " & Integer'Image(A));
+   Ada.Text_IO.Put_Line("Float: " & Float'Image(B));
+   Ada.Text_IO.Put_Line("Boolean: " & Boolean'Image(C));
+   Ada.Text_IO.Put_Line("Character: " & D);
+   Ada.Text_IO.Put_Line("String: " & Name);
+end Data_Types;
+```
 
 ---
 
 ### 4. Kontrollstrukturen
 
-#### Bedingte Anweisungen
-Ada verwendet `if`, `elsif`, und `else`, um Bedingungen zu steuern.
+#### If-Anweisung
 
 ```ada
-procedure Conditional is
-   X : Integer := 15;
+procedure If_Example is
+   X : Integer := 5;
 begin
-   if X > 10 then
-      Ada.Text_IO.Put_Line("X ist größer als 10");
-   elsif X = 10 then
-      Ada.Text_IO.Put_Line("X ist genau 10");
+   if X > 0 then
+      Ada.Text_IO.Put_Line("X ist positiv");
+   elsif X < 0 then
+      Ada.Text_IO.Put_Line("X ist negativ");
    else
-      Ada.Text_IO.Put_Line("X ist kleiner als 10");
+      Ada.Text_IO.Put_Line("X ist null");
    end if;
-end Conditional;
+end If_Example;
 ```
 
 #### Schleifen
-Ada unterstützt `for`- und `while`-Schleifen.
+
+- `for`-Schleifen und `while`-Schleifen sind nützlich für Iterationen.
 
 ```ada
-procedure Loops is
+procedure Loop_Examples is
 begin
    -- For-Schleife
    for I in 1 .. 5 loop
@@ -112,51 +83,45 @@ begin
          J := J + 1;
       end loop;
    end;
-end Loops;
+end Loop_Examples;
 ```
 
 ---
 
 ### 5. Prozeduren und Funktionen
 
-Prozeduren und Funktionen sind grundlegende Bausteine der Modularisierung in Ada.
+Prozeduren und Funktionen ermöglichen die Modularisierung und Wiederverwendung von Code.
 
 ```ada
 procedure Greet(Name : in String) is
 begin
-   Ada.Text_IO.Put_Line("Hallo, " & Name & "!");
+   Ada.Text_IO.Put_Line("Hello, " & Name & "!");
 end Greet;
 
-function Square(X : in Integer) return Integer is
+function Square(X : Integer) return Integer is
 begin
    return X * X;
 end Square;
-
-procedure Main is
-   Result : Integer;
-begin
-   Greet("Ada");
-   Result := Square(4);
-   Ada.Text_IO.Put_Line("Square of 4 is: " & Integer'Image(Result));
-end Main;
 ```
 
 ---
 
-### 6. Modularisierung und Packages
+### 6. Packages und Modularisierung
 
-Packages helfen dabei, Programme zu modularisieren und wiederverwendbare Komponenten zu erstellen.
+Packages in Ada ermöglichen die Organisation von Code in separate Module. 
 
-**Beispiel für ein Package:**
+**Beispiel: Package Deklaration**
 
-`math_pkg.ads` – Spezifikationsdatei:
+Datei `math_pkg.ads`:
+
 ```ada
 package Math_Pkg is
    function Add(X, Y : Integer) return Integer;
 end Math_Pkg;
 ```
 
-`math_pkg.adb` – Implementierungsdatei:
+Datei `math_pkg.adb`:
+
 ```ada
 package body Math_Pkg is
    function Add(X, Y : Integer) return Integer is
@@ -166,49 +131,37 @@ package body Math_Pkg is
 end Math_Pkg;
 ```
 
-Verwendung des Packages:
-
-```ada
-with Ada.Text_IO;
-with Math_Pkg;
-
-procedure PackageExample is
-begin
-   Ada.Text_IO.Put_Line("3 + 4 = " & Integer'Image(Math_Pkg.Add(3, 4)));
-end PackageExample;
-```
-
 ---
 
 ### 7. Ausnahmebehandlung
 
-Ada bietet ein robustes System zur Behandlung von Ausnahmen (Exceptions).
+Ada bietet eingebaute Mechanismen zur Ausnahmebehandlung (`Exception Handling`), die dabei helfen, mit Laufzeitfehlern umzugehen.
 
 ```ada
-procedure ExceptionHandling is
+procedure Exception_Example is
    X, Y, Result : Integer := 0;
 begin
    X := 10;
    Y := 0;
    begin
-      Result := X / Y;  -- Hier wird eine Division durch Null ausgelöst
+      Result := X / Y;  -- Dies löst eine Division durch Null aus
    exception
       when Constraint_Error =>
          Ada.Text_IO.Put_Line("Fehler: Division durch Null");
    end;
-end ExceptionHandling;
+end Exception_Example;
 ```
 
 ---
 
-### 8. Concurrency (Nebenläufigkeit)
+### 8. Nebenläufigkeit (Concurrency)
 
-Ada bietet eingebaute Unterstützung für Concurrency über sogenannte Tasks.
+Ada bietet Unterstützung für Nebenläufigkeit durch das Konzept von Tasks.
 
 ```ada
 with Ada.Text_IO;
 
-procedure ConcurrencyExample is
+procedure Task_Example is
    task type Printer is
       entry Print(Message : String);
    end Printer;
@@ -224,25 +177,57 @@ procedure ConcurrencyExample is
 begin
    P1.Print("Task P1 sagt Hallo!");
    P2.Print("Task P2 sagt Tschüss!");
-end ConcurrencyExample;
+end Task_Example;
 ```
 
 ---
 
-### 9. Tipps und bewährte Vorgehensweisen
+### 9. Objektorientierte Programmierung in Ada
 
-- **Typisierung beachten**: Ada’s starke Typisierung hilft, Fehler frühzeitig zu erkennen.
-- **Modularisieren**: Verwende Packages, um Code strukturiert und lesbar zu halten.
-- **Exceptions nutzen**: Ada hat robuste Mechanismen zur Fehlerbehandlung.
-- **Concurrency gezielt einsetzen**: Ada’s Tasking-Mechanismen sind leistungsstark, aber sollten bei komplexen Programmen mit Bedacht genutzt werden.
+Ada unterstützt Objektorientierung, unter anderem durch das Konzept von "Tagged Types".
+
+```ada
+package Shape_Pkg is
+   type Shape is abstract tagged null record;
+
+   function Area(S : Shape) return Float is abstract;
+end Shape_Pkg;
+
+package Circle_Pkg is
+   type Circle is new Shape_Pkg.Shape with record
+      Radius : Float;
+   end record;
+
+   overriding function Area(C : Circle) return Float;
+end Circle_Pkg;
+
+package body Circle_Pkg is
+   function Area(C : Circle) return Float is
+   begin
+      return 3.14159 * C.Radius * C.Radius;
+   end Area;
+end Circle_Pkg;
+```
 
 ---
 
-### 10. Beispielprogramm: Einfache Verwaltung eines Inventars
+### 10. Beispiele und Tipps zur Fehlersuche
 
-Dieses Beispiel zeigt, wie man eine Liste von Gegenständen (Items) in einem Inventar verwaltet.
+- **Strenge Typisierung nutzen**: Ada's strenge Typprüfung minimiert Fehler.
+- **Exception Handling verwenden**: Die Ausnahmebehandlung hilft bei der Stabilität des Programms.
+- **Verständliche Namensgebung**: Vermeide Abkürzungen und wähle beschreibende Namen.
+- **Packages verwenden**: Modularisierung durch Packages verbessert die Lesbarkeit.
 
-**Speicherdatei** (`inventory.ads`):
+---
+
+### 11. Beispielprogramm und Übungsaufgaben
+
+Hier ein Beispiel für ein Programm zur Verwaltung einer einfachen Inventarliste.
+
+**Inventar Package:**
+
+`inventory.ads`:
+
 ```ada
 package Inventory is
    type Item is record
@@ -255,7 +240,8 @@ package Inventory is
 end Inventory;
 ```
 
-**Implementierung** (`inventory.adb`):
+`inventory.adb`:
+
 ```ada
 package body Inventory is
    Items : array(1..100) of Item;
@@ -281,7 +267,8 @@ package body Inventory is
 end Inventory;
 ```
 
-**Nutzung im Hauptprogramm**:
+**Hauptprogramm**:
+
 ```ada
 with Inventory;
 with Ada.Text_IO;
@@ -294,5 +281,3 @@ begin
    Inventory.Display_Items;
 end Main;
 ```
-
-Dieses Tutorial deckt die wesentlichen Konzepte von Ada ab und bietet eine Grundlage für die Entwicklung robuster, strukturierter und sicherheitskritischer Anwendungen.
