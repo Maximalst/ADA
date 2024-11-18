@@ -1,6 +1,6 @@
 Hello and welcome to my little world of programming in Ada.
 
-# The tutorial can be found in the wiki
+# The tutorial can be found in the WIKI.
 
 ### Contents
 1 **Introduction and history**
