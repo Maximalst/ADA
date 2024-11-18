@@ -14,6 +14,3 @@ Hello and welcome to my little world of programming in Ada.
 9 **Object-oriented programming in Ada**
 10 **Examples and tips for debugging**
 11 **Example program and exercises**
-
-
-Translated with DeepL.com (free version)
