@@ -1,15 +1,19 @@
-Hallo und herzlich willkommen in meiner kleinen Welt der Programmierung in Ada.
+Hello and welcome to my little world of programming in Ada.
 
-### Inhalt
-1. **Einführung und Historie**
-2. **Grundlegende Syntax**
-3. **Datentypen und Variablen**
-4. **Kontrollstrukturen**
-5. **Prozeduren und Funktionen**
-6. **Packages und Modularisierung**
-7. **Ausnahmebehandlung (Exception Handling)**
-8. **Nebenläufigkeit (Concurrency)**
-9. **Objektorientierte Programmierung in Ada**
-10. **Beispiele und Tipps zur Fehlersuche**
-11. **Beispielprogramm und Übungsaufgaben**
+# The tutorial can be found in the wiki
 
+### Contents
+1 **Introduction and history**
+2 **Basic syntax**
+3 **Data types and variables**
+4 **Control structures**
+5 **Procedures and functions**
+6 **Packages and modularization**
+7 **Exception handling**
+8 **Concurrency**
+9 **Object-oriented programming in Ada**
+10 **Examples and tips for debugging**
+11 **Example program and exercises**
+
+
+Translated with DeepL.com (free version)
